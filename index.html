@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 38px;
+      background: linear-gradient(90deg, #ff4d6d, #ff85a2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 14px 32px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yes-button {
+      background: #ff4d6d;
+      color: white;
+      box-shadow: 0 8px 16px rgba(255, 77, 109, 0.4);
+    }
+
+    .no-button {
+      background: white;
+      color: #ff4d6d;
+    }
+
+    /* GIF styling */
+    #celebration {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #celebration img {
+      width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <h1 id="question">Will you be my Valentine? 💖💘</h1>
+
+  <!-- BUTTONS -->
+  <div class="buttons" id="buttons">
+    <button class="no-button" onclick="handleNoClick()">No</button>
+    <button class="yes-button" onclick="handleYesClick()">Yes 💕</button>
+  </div>
+
+  <!-- GIF (hidden initially) -->
+  <div id="celebration">
+    <img src="happy-kid.gif" alt="Happy dancing kid">
+  </div>
+
+  <script>
+    let messageIndex = 0;
+
+    const messages = [
+      "Are you sure? 💔",
+      "Think again 😏",
+      "Don't break my heart 🥺",
+      "Last chance! 💘"
+    ];
+
+    function handleNoClick() {
+      const question = document.getElementById("question");
+      const yesButton = document.querySelector(".yes-button");
+
+      question.textContent = messages[messageIndex];
+      messageIndex = (messageIndex + 1) % messages.length;
+
+      const currentSize = parseFloat(
+        window.getComputedStyle(yesButton).fontSize
+      );
+      yesButton.style.fontSize = `${currentSize * 1.4}px`;
+    }
+
+    function handleYesClick() {
+      const question = document.getElementById("question");
+      const buttons = document.getElementById("buttons");
+      const celebration = document.getElementById("celebration");
+
+      question.textContent = "Good decision ❤️✨";
+      buttons.style.display = "none";
+      celebration.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
